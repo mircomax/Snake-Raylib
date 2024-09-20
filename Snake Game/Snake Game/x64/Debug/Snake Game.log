@@ -1,0 +1,4 @@
+﻿  Snake.cpp
+C:\Users\mirco\Desktop\C++\Snake Game\Snake Game\Snake.cpp(14,59): warning C4244: 'argomento': conversione da 'float' a 'int'. Possibile perdita di dati.
+C:\Users\mirco\Desktop\C++\Snake Game\Snake Game\Snake.cpp(14,38): warning C4244: 'argomento': conversione da 'float' a 'int'. Possibile perdita di dati.
+  Snake Game.vcxproj -> C:\Users\mirco\Desktop\C++\Snake Game\x64\Debug\Snake Game.exe
