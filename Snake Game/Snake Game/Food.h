@@ -9,9 +9,10 @@ private:
 	int cellCount;
 	int cellsize;
 public:
-	Vector2 Position;
+	Rectangle food;
+	Vector2 Position; // Coordinate del cibo
 	Food();
-	void DrawFood();
-	void ChangePosition();
+	void DrawFood(); // Disegnare il cibo 
+	void ChangePosition(); // Randomizzare la posizione del cibo
 };
 
