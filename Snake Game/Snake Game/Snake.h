@@ -16,5 +16,6 @@ public:
 	void DrawSnake(); // Disegnarlo
 	void MovimentoSnake(); // Funzione per muoverlo
 	void CollisioneCibo(Food& food); // Funzione per gestire la collisione col cibo 
+	void FinePartita();
 };
 

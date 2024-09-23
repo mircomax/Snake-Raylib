@@ -23,8 +23,8 @@ void Snake::DrawSnake() {
 }
 
 void Snake::MovimentoSnake() {
-    head = { (body.at(0)).x * 30, (body.at(0)).y * 30, 30, 30 }; // Aggiornate coordinate della testa 
-
+    head = { ((body.at(0)).x * 30) , (body.at(0)).y * 30, 30, 30 }; // Aggiornate coordinate della testa 
+    
     // Cancellato l'ultimo tratto e spostato avanti per fare sembrare che si stia muovendo
     body.pop_back(); 
     body.push_front(Vector2Add(body.at(0),DirezioneMovimento));
@@ -35,5 +35,14 @@ void Snake::CollisioneCibo(Food& food) {
         food.ChangePosition(); // Cibo spostato in un punto casuale 
         body.push_front(Vector2Add(body.at(0), DirezioneMovimento)); // Aggiunto un tratto al serpente
     }
+}
+
+void Snake::FinePartita() {
+    for (size_t i = 2; i < body.size(); i++) {
+        body.pop_back(); // Viene riportato il corpo del serpente alla sua lunghezza iniziale 
+    }
+    // Resettate alcune variabili importanti
+    body = { Vector2{FirstPositionX, FirstPositionY}, Vector2{FirstPositionX - 1.0f, FirstPositionY}, Vector2{FirstPositionX - 2.0f, FirstPositionY} };
+    head = { ((body.at(0)).x * 30) , (body.at(0)).y * 30, 30, 30 };
 }
 

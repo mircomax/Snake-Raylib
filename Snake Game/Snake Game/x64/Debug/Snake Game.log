@@ -1,3 +1,2 @@
-﻿  Main.cpp
-C:\Users\mirco\Desktop\C++\Snake Game\Snake Game\Main.cpp(46,15): warning C4244: 'argomento': conversione da 'time_t' a 'unsigned int'. Possibile perdita di dati.
+﻿  Snake.cpp
   Snake Game.vcxproj -> C:\Users\mirco\Desktop\C++\Snake Game\x64\Debug\Snake Game.exe

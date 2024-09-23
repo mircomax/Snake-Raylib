@@ -40,12 +40,20 @@ void ChangeDirection(Snake& snake) { // Per permettere all'user di muovere il se
     }
 }
 
+void CheckResetPartita(Snake& snake, int& aspetta) { // Controllare se la testa del serpente colpisce il suo corpo o un muro
+    if (snake.head.x > 720 || snake.head.y > 720 || snake.head.x < 0  || snake.head.y < 0 ) {
+        snake.FinePartita();
+        aspetta = 120; // Resettato il contatore per aspettare 2 secondi prima di fare ripartire il gioco 
+    }   
+}
+
 
 int main(void)
 {
     srand(time(NULL));
     const int screenWidth = 750;
     const int screenHeight = 750;
+    int aspetta = 0; // Per fare aspettare 2 secondi nel momento in cui viene resettata la partita 
     Color LightGreen = { 173, 204, 96, 255 };
     Color DarkGreen = { 43, 51, 24, 255};
     InitWindow(screenWidth, screenHeight, "Snake Game");
@@ -58,16 +66,24 @@ int main(void)
     {
         BeginDrawing();
 
-        ChangeDirection(snake); // Cambiare la direzione del serpente in base all'input dell'user
+        if (aspetta <= 5) { // Il serpente si muove se il gioco non si sta resettando
+            ChangeDirection(snake); // Cambiare la direzione del serpente in base all'input dell'user
+            Update(snake, 0.3); // Fare muovere verso la direzione stabilita il serpente
+        }
+
         snake.CollisioneCibo(food); // Controllare le collisioni a ogni frame
+        CheckResetPartita(snake, aspetta);
 
         ClearBackground(LightGreen);
 
-        Update(snake, 0.3); // Fare muovere verso la direzione stabilita il serpente 
         snake.DrawSnake();
+        
         food.DrawFood();
 
         EndDrawing();
+        
+        if (aspetta > 0) aspetta--; // Decrementato il contatore dei secondi ogni frame 
+        
     }
 
     // De-Initialization
